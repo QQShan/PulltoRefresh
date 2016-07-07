@@ -94,13 +94,13 @@ public class SqqRecyclerview extends LinearLayout {
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
                 //STATE = newState;
-                Log.d("sqqq", "state" + newState);
+                //Log.d("sqqq","state"+newState);
             }
 
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                Log.d("sqqq", "dy:" + dy);
+                //Log.d("sqqq", "dy:" + dy);
 
                 if (!swipeRefreshLayout.isRefreshing()
                         && isLastItemVisible(recyclerView) && !isLoading
@@ -109,10 +109,10 @@ public class SqqRecyclerview extends LinearLayout {
                     startLoad();
                 }
 
-                if (!swipeRefreshLayout.isRefreshing()
+                if(!swipeRefreshLayout.isRefreshing()
                         && !isLoading
                         && dy < -10
-                        && footerView.isShown()) {
+                        && footerView.isShown()){
                     footerView.setVisibility(View.GONE);
                 }
             }
@@ -131,7 +131,6 @@ public class SqqRecyclerview extends LinearLayout {
         recyclerView.setAdapter(adapter);
         adapterDataObserver = new RecyclerViewDataObserver();
         recyclerView.getAdapter().registerAdapterDataObserver(adapterDataObserver);
-
     }
 
     public void setLayoutManager(RecyclerView.LayoutManager layout) {
@@ -357,10 +356,10 @@ public class SqqRecyclerview extends LinearLayout {
    /* private void endLoadRefresh(){
         footerView.setVisibility(View.GONE);
         *//**
-         * 这里非正规做法，这里只要向上移动一段距离就行，不管多少
-         * 最好露出一点，让用户知道你加载了数据
-         * 全部露出的话，在只加载了一条数据的时候会有问题
-         *//*
+     * 这里非正规做法，这里只要向上移动一段距离就行，不管多少
+     * 最好露出一点，让用户知道你加载了数据
+     * 全部露出的话，在只加载了一条数据的时候会有问题
+     *//*
         recyclerView.scrollBy(0,-10);
         isLoading = false;
     }*/
